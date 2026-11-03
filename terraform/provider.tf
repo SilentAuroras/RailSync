@@ -15,7 +15,7 @@ provider "azurerm" {}
 variable "location" {}
 
 // Resource group for project
-resource "azurerm_resource_group" "railsync-rg" {
-	name     = "railsync-rg"
+resource "azurerm_resource_group" "railsyncRg" {
+	name     = "railsyncRg"
 	location = var.location
 }

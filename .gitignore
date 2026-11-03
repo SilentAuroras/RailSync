@@ -1,0 +1,10 @@
+# Terraform
+terraform.tfvars
+*.tfstate
+*.tfstate.*
+
+# PlatformIO
+*.pio/
+
+# Arduino wifi secrets
+secrets.h
