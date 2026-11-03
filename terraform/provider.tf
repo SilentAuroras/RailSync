@@ -1,11 +1,11 @@
 // Required providers
 terraform {
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "=5.0.0"
-    }
-  }
+	required_providers {
+		azurerm = {
+			source  = "hashicorp/azurerm"
+			version = "=5.0.0"
+		}
+	}
 }
 
 // Azure provider
@@ -16,6 +16,6 @@ variable "location" {}
 
 // Resource group for project
 resource "azurerm_resource_group" "railsync-rg" {
-  name     = "railsync-rg"
-  location = var.location
+	name     = "railsync-rg"
+	location = var.location
 }
