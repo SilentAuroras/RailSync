@@ -1,7 +1,7 @@
 // AKS cluster
 resource "azurerm_kubernetes_cluster" "railsyncAKS" {
 	name = "railsyncAKS"
-	dns_prefix = "railsyncAKS-"
+	dns_prefix = "railsyncAKS"
 
 	// Set location and rg
 	location = var.location

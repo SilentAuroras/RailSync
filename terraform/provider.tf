@@ -9,7 +9,9 @@ terraform {
 }
 
 // Azure provider
-provider "azurerm" {}
+provider "azurerm" {
+	features {}
+}
 
 // Location variable - pull from tfvars
 variable "location" {}

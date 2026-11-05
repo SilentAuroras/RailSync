@@ -1,6 +1,6 @@
 // CosmosDb account
 resource "azurerm_cosmosdb_account" "railsyncCosmos" {
-	name = "railsyncCosmos"
+	name = "railsynccosmos"
 
 	// Define rg and location
 	location = var.location
