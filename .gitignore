@@ -8,5 +8,8 @@ terraform.tfvars
 # PlatformIO
 *.pio/
 
+# Ide
+.idea/
+
 # Arduino wifi secrets
 secrets.h
