@@ -1,0 +1,6 @@
+aiohttp
+asyncio
+azure-eventhub
+azure-eventhub-checkpointstoreblob-aio
+azure-identity
+logging

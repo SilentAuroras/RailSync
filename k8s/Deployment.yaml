@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: railsync
+  labels:
+    app: railsync
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: railsync
+  template:
+    metadata:
+      name: railsync
+      labels:
+        app: railsync
+    spec:
+      containers:
+        - name: analyzer
+          image: analyzer:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+        - name: consumer
+          image: consumer:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+        - name: website
+          image: website:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+      restartPolicy: Always
