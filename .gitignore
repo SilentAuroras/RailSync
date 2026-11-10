@@ -10,6 +10,7 @@ terraform.tfvars
 
 # Ide
 .idea/
+.vscode/
 
 # Arduino wifi secrets
 secrets.h
