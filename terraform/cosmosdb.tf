@@ -7,6 +7,11 @@ resource "azurerm_cosmosdb_account" "railsyncCosmos" {
 	resource_group_name = azurerm_resource_group.railsyncRg.name
 	automatic_failover_enabled = false
 
+	// Enable features for cosmos
+	capabilities {
+		name = "EnableTable"
+	}
+
 	// Set cosmosdb type and policies
 	offer_type = "Standard"
 	kind = "GlobalDocumentDB"

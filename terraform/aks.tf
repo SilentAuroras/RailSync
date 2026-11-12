@@ -16,7 +16,7 @@ resource "azurerm_kubernetes_cluster" "railsyncAKS" {
 	default_node_pool {
 	  name = "default"
 	  node_count = 2
-	  vm_size = "Standard_F4s_v2"
+	  vm_size = "Standard_D4s_v4"
 	}
 
 	// Auto enabled
