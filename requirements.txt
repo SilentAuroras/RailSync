@@ -1,5 +1,6 @@
 aiohttp
 asyncio
+azure-cosmos
 azure-eventhub
 azure-eventhub-checkpointstoreblob-aio
 azure-identity
