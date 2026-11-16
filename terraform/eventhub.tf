@@ -22,3 +22,13 @@ resource "azurerm_eventhub_authorization_rule" "railsyncAuth" {
 	namespace_name      = azurerm_eventhub_namespace.railsyncEventNamespace.name
 	eventhub_name       = azurerm_eventhub.railsyncEventHub.name
 }
+
+// Output the event hub name for tests and endpoints
+output "EVENT_HUB_NAME" {
+	value = azurerm_eventhub.railsyncEventHub.name
+}
+
+// Output the event hub fqdn for tests and endpoints
+output "EVENT_HUB_FQDN" {
+	value = "${azurerm_eventhub.railsyncEventHub.name}.servicebus.windows.net"
+}

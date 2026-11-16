@@ -12,5 +12,11 @@ terraform.tfvars
 .idea/
 .vscode/
 
+# Python
+__pycache__/
+
 # Arduino wifi secrets
 secrets.h
+
+# Python secrets file for testing
+config.py

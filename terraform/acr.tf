@@ -23,7 +23,7 @@ resource "azurerm_container_registry" "railsyncACR" {
 
 // Assign permissions to allow AKS to pull containers from ACR
 resource "azurerm_role_assignment" "railsyncACRPull" {
-	role_definition_name = "railsyncACRPull"
+	role_definition_name = "AcrPull"
 	scope                = azurerm_container_registry.railsyncACR.id
 	principal_id         = azurerm_kubernetes_cluster.railsyncAKS.kubelet_identity[0].object_id
 }
