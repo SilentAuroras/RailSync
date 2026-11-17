@@ -16,6 +16,8 @@ spec:
         app: railsync
     spec:
       containers:
+
+        # Analyze data from event hub
         - name: analyzer
           image: analyzer:latest
           imagePullPolicy: IfNotPresent
@@ -28,6 +30,8 @@ spec:
             limits:
               cpu: 500m
               memory: 512Mi
+
+        # Read IoT event hub data and write to db
         - name: consumer
           image: consumer:latest
           imagePullPolicy: IfNotPresent
@@ -40,6 +44,8 @@ spec:
             limits:
               cpu: 500m
               memory: 512Mi
+
+        # Website for statistics and controller
         - name: website
           image: website:latest
           imagePullPolicy: IfNotPresent
@@ -52,4 +58,12 @@ spec:
             limits:
               cpu: 500m
               memory: 512Mi
+
+        # Prometheus instance
+        - name: prometheus
+          image: prom/prometheus:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 9090
+
       restartPolicy: Always

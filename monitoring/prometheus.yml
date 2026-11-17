@@ -1,0 +1,30 @@
+# Global intervals
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+# Define endpoints
+scrape_configs:
+
+  # Prometheus
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ["localhost:9090"]
+
+  # Analyzer
+  - job_name: "analyzer"
+    metrics_path: /metrics
+    static_configs:
+      - targets: ["analyzer:82"]
+
+  # Consumer
+  - job_name: "consumer"
+    metrics_path: /metrics
+    static_configs:
+      - targets: ["consumer:81"]
+
+  # Website
+  - job_name: "website"
+    metrics_path: /metrics
+    static_configs:
+      - targets: ["website:80"]
