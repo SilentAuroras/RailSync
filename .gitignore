@@ -5,12 +5,8 @@ terraform.tfvars
 *.terraform/
 *.terraform.lock.hcl
 
-# PlatformIO
-*.pio/
-
 # Ide
 .idea/
-.vscode/
 
 # Python
 __pycache__/
