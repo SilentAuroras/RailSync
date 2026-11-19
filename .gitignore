@@ -10,8 +10,9 @@ terraform.tfvars
 
 # Python
 __pycache__/
+.pytest_cache/
 
-# Arduino wifi secrets
+# Arduino Wi-Fi secrets
 secrets.h
 
 # Python secrets file for testing
