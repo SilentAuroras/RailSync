@@ -4,5 +4,6 @@ azure-cosmos
 azure-eventhub
 azure-eventhub-checkpointstoreblob-aio
 azure-identity
-Flask
+fastapi
 logging
+prometheus_client
