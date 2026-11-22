@@ -5,6 +5,7 @@ resource "azurerm_storage_account" "railsyncStorageAccount" {
   account_replication_type = "LRS"
   resource_group_name      = azurerm_resource_group.railsyncRg.name
   location                 = var.location
+  public_network_access    = "Disabled"
 }
 
 // Storage for IoT Hub
