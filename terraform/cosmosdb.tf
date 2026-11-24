@@ -13,6 +13,8 @@ resource "azurerm_cosmosdb_account" "railsyncCosmos" {
   // Set cosmosdb type and policies
   offer_type = "Standard"
   kind       = "GlobalDocumentDB"
+
+  // Location
   geo_location {
     location          = var.location
     failover_priority = 0
@@ -29,12 +31,24 @@ resource "azurerm_cosmosdb_account" "railsyncCosmos" {
   ]
 }
 
-// CosmosDB table - Speed
-resource "azurerm_cosmosdb_table" "railsyncSpeed" {
-  name                = "railsyncSpeed"
-  resource_group_name = azurerm_resource_group.railsyncRg.name
+// CosmosDB database
+resource "azurerm_cosmosdb_sql_database" "railsyncDB" {
+  name                = "railsyncDB"
   account_name        = azurerm_cosmosdb_account.railsyncCosmos.name
-  throughput          = 400
+  resource_group_name = azurerm_resource_group.railsyncRg.name
+
+  // Wait for cosmos account
+  depends_on = [azurerm_cosmosdb_account.railsyncCosmos]
+}
+
+// CosmosDB container
+resource "azurerm_cosmosdb_sql_container" "railsyncContainer" {
+  name                  = "railsyncContainer"
+  account_name          = azurerm_cosmosdb_account.railsyncCosmos.name
+  database_name         = azurerm_cosmosdb_sql_database.railsyncDB.name
+  resource_group_name   = azurerm_resource_group.railsyncRg.name
+  partition_key_paths   = ["/definition/id"]
+  partition_key_version = 1
 
   // Wait for cosmos account
   depends_on = [azurerm_cosmosdb_account.railsyncCosmos]

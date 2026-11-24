@@ -14,7 +14,7 @@ resource "azurerm_iothub" "railsyncIoTHub" {
     capacity = "1"
   }
 
-  // IoT Endpoint config
+  // IoT Endpoint config - Storage container for avro backups
   endpoint {
     type                       = "AzureIotHub.StorageContainer"
     connection_string          = azurerm_storage_account.railsyncStorageAccount.primary_connection_string
@@ -45,4 +45,14 @@ resource "azurerm_iothub" "railsyncIoTHub" {
       lock_duration      = "PT30S"
     }
   }
+}
+
+// IoT endpoint - Route directly to CosmosDB
+resource "azurerm_iothub_endpoint_cosmosdb_account" "railsyncIoTCosmos" {
+  name                = "railsyncIoTCosmos"
+  iothub_id           = azurerm_iothub.railsyncIoTHub.id
+  resource_group_name = azurerm_resource_group.railsyncRg.name
+  endpoint_uri        = azurerm_cosmosdb_account.railsyncCosmos.endpoint
+  database_name       = azurerm_cosmosdb_sql_database.railsyncDB.name
+  container_name      = azurerm_cosmosdb_sql_container.railsyncContainer.name
 }
